@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="saludo">Hello! Today is a new day</string>
+    <color name="background">#BB8FCE</color>
+    <color name="colorText">#5F6A6A</color>
+</resources>

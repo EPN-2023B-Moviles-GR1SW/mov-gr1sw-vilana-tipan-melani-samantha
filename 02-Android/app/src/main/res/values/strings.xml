@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">B2023-gr1sw-msvt</string>
-    <string name="saludo">Buenos dias</string>\
+    <string name="saludo">Hola! Hoy es un nuevo dia</string>
+    <color name="background">#AED6F1</color>
+    <color name="colorText">#FF9800</color>
+
+
+
 </resources>
