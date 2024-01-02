@@ -15,27 +15,26 @@ class CIntentExplicitoParametros : AppCompatActivity() {
         val edad = intent.getIntExtra("edad", 0)
         mostrarSnackbar("${nombre} ${apellido} ${edad}")
         val boton = findViewById<Button>(R.id.btn_devolver_respuesta)
-        boton.
-                setOnClickListener { devolverRespuesta() }
+        boton
+            .setOnClickListener { devolverRespuesta() }
     }
-
     fun devolverRespuesta(){
         val intentDevolverParametros = Intent()
         intentDevolverParametros.putExtra("nombreModificado", "Melani")
-        intentDevolverParametros.putExtra("edadModificada", 23)
+        intentDevolverParametros.putExtra("edadModificado", 23)
         setResult(
-            RESULT_OK, //resultado ok
+            RESULT_OK, // resultado ok
             intentDevolverParametros // variables de intent
-        )// ponemos resultado ok y opcional retornamos variables de intent
+        ) // ponemos resultado ok y opcional retornamos variables de intent
         finish() // cerramos la actividad
     }
 
     fun mostrarSnackbar(texto:String){
         Snackbar
             .make(
-                findViewById(R.id.id_layout_intents), //view
-                texto, //texto
-                Snackbar.LENGTH_LONG //tiempo
+                findViewById(R.id.id_layout_intents), // view
+                texto, // texto
+                Snackbar.LENGTH_LONG // tiempo
             )
             .show()
     }
