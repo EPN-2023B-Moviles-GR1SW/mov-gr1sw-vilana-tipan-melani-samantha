@@ -3,7 +3,9 @@
     <string name="saludo">Hola! Hoy es un nuevo dia</string>
     <color name="background">#AED6F1</color>
     <color name="colorText">#FF9800</color>
-
-
-
+    <string-array name="string_array_opciones_dialog">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+    </string-array>
 </resources>
