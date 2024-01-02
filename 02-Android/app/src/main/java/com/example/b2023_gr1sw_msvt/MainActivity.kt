@@ -17,23 +17,22 @@ class MainActivity : AppCompatActivity() {
             ActivityResultContracts.StartActivityForResult()
         ){
                 result ->
-              if(result.resultCode == Activity.RESULT_OK) {
-                  if (result.data != null) {
-                      //Logica del negocio
-                      val data = result.data
-                      mostrarSnackbar(
-                          "${data?.getStringExtra("nombreModificado")}"
-                      )
-                  }
-              }
+            if(result.resultCode == Activity.RESULT_OK){
+                if(result.data != null){
+                    // Logica Negocio
+                    val data = result.data
+                    mostrarSnackbar(
+                        "${data?.getStringExtra("nombreModificado")}"
+                    )
+                }
+            }
         }
-
     fun mostrarSnackbar(texto:String){
         Snackbar
             .make(
-                findViewById(R.id.id_layout_main), //view
-                texto, //texto
-                Snackbar.LENGTH_LONG //tiempo
+                findViewById(R.id.id_layout_main), // view
+                texto, // texto
+                Snackbar.LENGTH_LONG // tiempo
             )
             .show()
     }
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                     if(result.data!!.data != null){
                         val uri: Uri = result.data!!.data!!
                         val cursor = contentResolver.query(
-                            uri, null, null, null, null, null)
+                            uri, null, null, null,  null, null)
                         cursor?.moveToFirst()
                         val indiceTelefono = cursor?.getColumnIndex(
                             ContactsContract.CommonDataKinds.Phone.NUMBER
