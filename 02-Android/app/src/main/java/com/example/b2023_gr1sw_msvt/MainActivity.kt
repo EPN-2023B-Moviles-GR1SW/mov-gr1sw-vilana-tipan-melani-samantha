@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             ActivityResultContracts.StartActivityForResult()
         ){
                 result ->
-            if(result.resultCode === Activity.RESULT_OK){
+            if(result.resultCode == Activity.RESULT_OK){
                 if(result.data != null){
                     if(result.data!!.data != null){
                         val uri: Uri = result.data!!.data!!
@@ -63,6 +63,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
+        //Base de datos sqlite
+        EBaseDeDatos.tablaEntrenador = ESqliteHelperEntrenador(this)
+
+
         val botonCicloVida = findViewById<Button>(R.id.btn_ciclo_vida)
         botonCicloVida
             .setOnClickListener{
@@ -76,7 +81,7 @@ class MainActivity : AppCompatActivity() {
         val botonIntentImplicito = findViewById<Button>(
             R.id.btn_ir_intent_implicito)
         botonIntentImplicito
-            .setOnClickListener{
+            .setOnClickListener {
                 val intentConRespuesta = Intent(
                     Intent.ACTION_PICK,
                     ContactsContract.CommonDataKinds.Phone.CONTENT_URI
@@ -87,20 +92,25 @@ class MainActivity : AppCompatActivity() {
         val botonIntentExplicito = findViewById<Button>(
             R.id.btn_ir_intent_explicito)
         botonIntentExplicito
-            .setOnClickListener{
-                abrirActividadParametros(
+            .setOnClickListener {
+                abrirActividadConParametros(
                     CIntentExplicitoParametros::class.java)
+            }
+        val botonSqlite = findViewById<Button>(R.id.btn_sqlite)
+        botonSqlite
+            .setOnClickListener {
+                irActividad(ECrudEntrenador::class.java)
             }
     }//Termina onCreate
 
-    fun abrirActividadParametros(
+    fun abrirActividadConParametros(
         clase: Class<*>
     ){
         val intentExplicito = Intent(this, clase)
-        //Enviar parametros (solamente variables primitivas)
-        intentExplicito.putExtra("nombre", "Samantha")
-        intentExplicito.putExtra("nombre", "Vilaña")
-        intentExplicito.putExtra("edad", 22)
+        // Enviar parametros (solamente variables primitivas)
+        intentExplicito.putExtra("nombre", "Adrian")
+        intentExplicito.putExtra("apellido", "Eguez")
+        intentExplicito.putExtra("edad", 34)
 
         callbackContenidoIntentExplicito.launch(intentExplicito)
     }

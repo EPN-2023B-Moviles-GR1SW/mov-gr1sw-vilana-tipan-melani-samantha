@@ -20,8 +20,8 @@ class CIntentExplicitoParametros : AppCompatActivity() {
     }
     fun devolverRespuesta(){
         val intentDevolverParametros = Intent()
-        intentDevolverParametros.putExtra("nombreModificado", "Melani")
-        intentDevolverParametros.putExtra("edadModificado", 23)
+        intentDevolverParametros.putExtra("nombreModificado", "Vicente")
+        intentDevolverParametros.putExtra("edadModificado", 33)
         setResult(
             RESULT_OK, // resultado ok
             intentDevolverParametros // variables de intent
