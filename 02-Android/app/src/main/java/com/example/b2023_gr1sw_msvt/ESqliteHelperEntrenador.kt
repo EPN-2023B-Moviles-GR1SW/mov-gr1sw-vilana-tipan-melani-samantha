@@ -86,9 +86,6 @@ class ESqliteHelperEntrenador(
     }
 
 
-
-
-
     fun consultarEntrenadorPorID(id: Int): BEntrenador{
         val baseDatosLectura = readableDatabase
         val scriptConsultaLectura = """
