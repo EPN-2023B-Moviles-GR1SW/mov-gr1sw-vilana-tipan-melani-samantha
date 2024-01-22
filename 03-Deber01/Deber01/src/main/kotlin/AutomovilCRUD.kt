@@ -41,7 +41,7 @@ class AutomovilCRUD {
             )
 
             Archivos.guardarAutomoviles(arregloAuto)
-            //Archivos.guardarTiendas(Archivos.leerTiendas())
+         
         }
 
 
