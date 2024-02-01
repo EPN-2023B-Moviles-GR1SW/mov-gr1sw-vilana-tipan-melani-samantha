@@ -8,6 +8,7 @@ import android.provider.ContactsContract
 import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -121,6 +122,12 @@ class MainActivity : AppCompatActivity() {
                 setOnClickListener {
                     irActividad(HFirebaseUIAuth::class.java)
                 }
+
+        val botonFirestore = findViewById<Button>(R.id.btn_intent_firestore)
+        botonFirestore
+            .setOnClickListener {
+                irActividad(IFirestore::class.java)
+            }
     }//Termina onCreate
 
     fun abrirActividadConParametros(
