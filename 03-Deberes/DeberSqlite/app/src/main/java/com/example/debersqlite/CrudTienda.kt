@@ -14,8 +14,8 @@ class CrudTienda : AppCompatActivity() {
         val idTienda = intent.getIntExtra("id", 0)
         llenarDatosFormulario(idTienda)
 
-        val botonCrearBDD = findViewById<Button>(R.id.btn_crear_tienda)
-        botonCrearBDD
+        val botonCrearTienda = findViewById<Button>(R.id.btn_crear_tienda)
+        botonCrearTienda
             .setOnClickListener{
                 val nombre = findViewById<EditText>(R.id.input_nombre_tienda)
                 val direccion = findViewById<EditText>(R.id.input_direccion_tienda)
@@ -29,8 +29,8 @@ class CrudTienda : AppCompatActivity() {
                 finish()
             }
 
-        val botonActualizarBDD = findViewById<Button>(R.id.btn_actualizar_tienda)
-        botonActualizarBDD
+        val botonActualizarTienda = findViewById<Button>(R.id.btn_actualizar_tienda)
+        botonActualizarTienda
             .setOnClickListener{
 
                 val id = idTienda
