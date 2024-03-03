@@ -16,8 +16,8 @@ class CrudAutomovil : AppCompatActivity() {
         val idTiendaSelected = intent.getIntExtra("id", 0)
         llenarDatos(idAutomovilE)
 
-        val botonCrearBDD = findViewById<Button>(R.id.btn_crear_automovil)
-        botonCrearBDD
+        val botonCrearAutomovil = findViewById<Button>(R.id.btn_crear_automovil)
+        botonCrearAutomovil
             .setOnClickListener {
                 try {
                     val modelo = findViewById<EditText>(R.id.input_modelo)
@@ -37,8 +37,8 @@ class CrudAutomovil : AppCompatActivity() {
                 }
             }
 
-        val botonActualizarBDD = findViewById<Button>(R.id.btn_actualizar_automovil)
-        botonActualizarBDD
+        val botonActualizarAutomovil = findViewById<Button>(R.id.btn_actualizar_automovil)
+        botonActualizarAutomovil
             .setOnClickListener {
                 try {
                     val id = idAutomovilE
