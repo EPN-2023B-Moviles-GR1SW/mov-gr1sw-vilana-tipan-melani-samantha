@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_crud_automovil"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TiendaActivity">
+
+    <TextView
+        android:id="@+id/txt_tiendas"
+        android:layout_width="145dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Tiendas"
+        android:textColor="#FF5722"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_crear_tiendas"
+        android:layout_width="95dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="56dp"
+        android:backgroundTint="#61FF5722"
+        android:text="Crear"
+        app:layout_constraintBottom_toTopOf="@+id/lv_tiendas"
+        app:layout_constraintEnd_toEndOf="@+id/lv_tiendas"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/lv_tiendas" />
+
+    <ListView
+        android:id="@+id/lv_tiendas"
+        android:layout_width="316dp"
+        android:layout_height="394dp"
+        android:layout_marginTop="144dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_tiendas"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/txt_tiendas"
+        app:layout_constraintTop_toBottomOf="@+id/txt_tiendas" />
+        android:layout_marginTop="60dp"
+</androidx.constraintlayout.widget.ConstraintLayout>
