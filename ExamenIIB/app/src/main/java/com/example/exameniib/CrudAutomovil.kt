@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -18,6 +19,9 @@ class CrudAutomovil : AppCompatActivity() {
 
         val nombreTienda = intent.getStringExtra("nombreT")?:""
         val modeloAuto = intent.getStringExtra("modeloA")?:""
+
+        // Obtener el objeto BAutomovil
+       // val automovilSeleccionado = intent.getParcelableExtra<BAutomovil>("automovilSeleccionado")
 
         llenarDatosFormulario(nombreTienda,modeloAuto)
 
@@ -61,7 +65,7 @@ class CrudAutomovil : AppCompatActivity() {
                         }
 
                 } catch (e: Exception) {
-                    mostrarSnackBar("Error, datos incorrectos")
+                    mostrarSnackBar("Error, datos incorrectos: ${e.message}")
                 }
             }
 
@@ -75,6 +79,7 @@ class CrudAutomovil : AppCompatActivity() {
                     val autosDisponibles = findViewById<EditText>(R.id.input_autos_disponibles).text.toString()
                    // val idTienda = idTiendaSelected
 
+                    //Encontrar el ID de tienda usando el nombre
                     db.collection("tiendas")
                         .whereEqualTo("nombre", nombreTienda)
                         .get()
@@ -87,7 +92,7 @@ class CrudAutomovil : AppCompatActivity() {
                                     .whereEqualTo("modelo", modeloAuto)
                                     .get()
                                     .addOnSuccessListener { documentosAuto ->
-                                        if (documentos.documents.isNotEmpty()) {
+                                        if (documentosAuto.documents.isNotEmpty()) {
                                             val autoId = documentosAuto.documents[0].id
 
                                             db.collection("tiendas").document(tiendaId)
@@ -115,7 +120,7 @@ class CrudAutomovil : AppCompatActivity() {
                             mostrarSnackBar("Error, datos incorrectos: ${e.message}")
                         }
                 } catch (e: Exception) {
-                    mostrarSnackBar("Error, datos incorrectos")
+                    mostrarSnackBar("Error, datos incorrectos: ${e.message}")
                 }
             }
         if (modeloAuto.isNotEmpty()) {

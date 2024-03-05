@@ -1,4 +1,4 @@
-package com.example.debersqlite
+package com.example.exameniib
 
 class BAutomovil (
     var modelo: String?,

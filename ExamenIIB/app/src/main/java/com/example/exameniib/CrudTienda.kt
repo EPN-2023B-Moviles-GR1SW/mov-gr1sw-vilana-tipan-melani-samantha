@@ -1,6 +1,7 @@
 package com.example.exameniib
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -13,6 +14,7 @@ class CrudTienda : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private var documentoId: String? = null
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

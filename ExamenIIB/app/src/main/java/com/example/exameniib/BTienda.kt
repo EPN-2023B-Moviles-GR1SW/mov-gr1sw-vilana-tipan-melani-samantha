@@ -1,5 +1,4 @@
-package com.example.debersqlite
-
+package com.example.exameniib
 import java.util.Date
 
 class BTienda (

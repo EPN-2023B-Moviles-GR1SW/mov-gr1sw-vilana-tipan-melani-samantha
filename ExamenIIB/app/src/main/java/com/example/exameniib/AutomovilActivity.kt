@@ -12,7 +12,7 @@ import android.widget.ListView
 import android.widget.TextView
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.example.debersqlite.BAutomovil
+
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QueryDocumentSnapshot
@@ -93,27 +93,27 @@ class AutomovilActivity : AppCompatActivity() {
     fun anadirAutomovil(auto: QueryDocumentSnapshot) {
 
 
-        val nuevoautomovil = BAutomovil(
+        val nuevoAutomovil = BAutomovil(
             auto.data["modelo"] as String?,
             auto.data["precio"] as String?,
             auto.data["autosDisponibles"] as String?
         )
-        Log.i("NuevoAuto", "Nuevo auto: $nuevoautomovil")
-        arregloAutomovil.add(nuevoautomovil)
+        Log.i("NuevoAuto", "Nuevo auto: $nuevoAutomovil")
+        arregloAutomovil.add(nuevoAutomovil)
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val nombre = intent.getStringExtra("nombre") ?: ""
-        val modelo = automovilSeleccionado?.modelo ?: return super.onContextItemSelected(item)
+        val modeloAuto = automovilSeleccionado?.modelo ?: return super.onContextItemSelected(item)
 
         return when (item.itemId) {
             R.id.mi_editar -> {
                 abrirActividadConParametros(CrudAutomovil::class.java,
-                    nombre,modelo)
+                    nombre,modeloAuto)
                 true
             }
             R.id.mi_eliminar -> {
-                eliminarLugar(nombre, modelo)
+                eliminarAutomovil(nombre, modeloAuto)
                 true
             }
             else -> super.onContextItemSelected(item)
@@ -136,10 +136,10 @@ class AutomovilActivity : AppCompatActivity() {
 
 
 
-    fun eliminarLugar(nombre: String, modelo: String) {
+    fun eliminarAutomovil(nombreTienda: String, modeloAuto: String) {
 
         db.collection("tiendas")
-            .whereEqualTo("nombre", nombre)
+            .whereEqualTo("nombre", nombreTienda)
             .get()
             .addOnSuccessListener { documentosTienda ->
                 if (documentosTienda.documents.isNotEmpty()) {
@@ -149,7 +149,7 @@ class AutomovilActivity : AppCompatActivity() {
                     db.collection("tiendas")
                         .document(idTienda)
                         .collection("automoviles")
-                        .whereEqualTo("modelo", modelo)
+                        .whereEqualTo("modelo", modeloAuto)
                         .get()
                         .addOnSuccessListener { documentosAutomovil ->
                             if (documentosAutomovil.documents.isNotEmpty()) {
@@ -169,14 +169,14 @@ class AutomovilActivity : AppCompatActivity() {
                                         Log.e("Firebase", "Error eliminando el automovil: ", exception)
                                     }
                             } else {
-                                Log.e("Firebase", "No se encontró el automovil con modelo: $modelo")
+                                Log.e("Firebase", "No se encontró el automovil con modelo: $modeloAuto")
                             }
                         }
                         .addOnFailureListener { exception ->
                             Log.e("Firebase", "Error obteniendo documentos: ", exception)
                         }
                 } else {
-                    Log.e("Firebase", "No se encontró la tienda con nombre: $nombre")
+                    Log.e("Firebase", "No se encontró la tienda con nombre: $nombreTienda")
                 }
             }
             .addOnFailureListener { exception ->
@@ -187,11 +187,11 @@ class AutomovilActivity : AppCompatActivity() {
 
 
 
-    fun abrirActividadConParametros(clase: Class<*>, nombre: String, modelo: String) {
+    fun abrirActividadConParametros(clase: Class<*>, nombreTienda: String, modeloAuto: String) {
         val intentExplicito = Intent(this, clase)
         // Enviar parámetros
-        intentExplicito.putExtra("nombreT", nombre)
-        intentExplicito.putExtra("modeloL", modelo)
+        intentExplicito.putExtra("nombreT", nombreTienda)
+        intentExplicito.putExtra("modeloA", modeloAuto)
         // Iniciar la actividad
         startActivity(intentExplicito)
     }
