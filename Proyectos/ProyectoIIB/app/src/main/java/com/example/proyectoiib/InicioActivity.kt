@@ -71,11 +71,12 @@ class InicioActivity : AppCompatActivity() {
             libro.data.get("titulo").toString(),
             libro.data.get("autor").toString(),
             libro.data.get("genero").toString(),
-            libro.data.get("urlImagen").toString(),
             libro.data.get("urlLibro").toString(),
-        )
+            libro.data.get("urlImagen").toString(),
+
+            )
         if (nuevoLibro.tipo == "Virtual") {
-            nuevoLibro.setUrlLibroString(libro.data.get("virtual").toString())
+            nuevoLibro.setUrlLibroString(libro.data.get("urlLibro").toString())
         }
         this.arregloLibros.add(nuevoLibro)
     }
@@ -88,6 +89,4 @@ class InicioActivity : AppCompatActivity() {
         val intent = Intent(this, clase)
         startActivity(intent)
     }
-
-
 }

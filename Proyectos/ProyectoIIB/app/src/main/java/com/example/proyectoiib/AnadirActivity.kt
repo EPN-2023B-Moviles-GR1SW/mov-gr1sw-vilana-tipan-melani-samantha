@@ -52,21 +52,19 @@ class AnadirActivity : AppCompatActivity() {
         val opcionesGenero = arrayListOf<String>()
 
         generosRef.get().addOnSuccessListener { generos ->
-                for (genero in generos) {
-                    val nombre = genero.getString("nombre")
-                    if (nombre != null) {
-                        opcionesGenero.add(nombre)
-                    }
+            for (genero in generos) {
+                val nombre = genero.getString("nombre")
+                if (nombre != null) {
+                    opcionesGenero.add(nombre)
                 }
-                val adaptadorSpinerGenero =
-                    ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionesGenero)
-                adaptadorSpinerGenero.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                this.spinnerGenero?.adapter = adaptadorSpinerGenero
-            }.addOnFailureListener { e ->
-
             }
+            val adaptadorSpinerGenero =
+                ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionesGenero)
+            adaptadorSpinerGenero.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            this.spinnerGenero?.adapter = adaptadorSpinerGenero
+        }.addOnFailureListener { e ->
 
-
+        }
 
         spinnerTipo?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -82,12 +80,9 @@ class AnadirActivity : AppCompatActivity() {
                     urlLibroTitulo?.visibility = View.VISIBLE
                 }
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {
-
             }
         }
-
         botonCrear!!.setOnClickListener {
             crearLibro()
         }
@@ -97,21 +92,17 @@ class AnadirActivity : AppCompatActivity() {
 
     private fun crearLibro() {
 
-        var urlLibroVirtual = ""
-        if (urlLibroEditar!!.text.isNotEmpty()) {
-            urlLibroVirtual = urlLibroEditar!!.text.toString()
-        }
-
         val libroNuevo = hashMapOf(
-            "tipo" to spinnerTipo!!.getItemAtPosition(spinnerTipo!!.selectedItemPosition)
-                .toString(),
+            "tipo" to spinnerTipo?.getItemAtPosition(spinnerTipo!!.selectedItemPosition).toString(),
             "titulo" to tituloEditText!!.text.toString(),
             "autor" to autorEditText!!.text.toString(),
             "genero" to spinnerGenero!!.getItemAtPosition(spinnerGenero!!.selectedItemPosition)
                 .toString(),
+            "urlLibro" to urlLibroEditar!!.text.toString().trim(),
+
             "urlImagen" to urlImagenEditar!!.text.toString(),
-            "urlLibro" to urlLibroVirtual
-        )
+
+            )
 
         val db = Firebase.firestore
         val generosRef = db.collection("usuarios").document(authActual!!.uid).collection("libros")
@@ -126,10 +117,9 @@ class AnadirActivity : AppCompatActivity() {
         )
 
         generosRef.add(libroNuevo).addOnSuccessListener {
-                finish()
-            }.addOnFailureListener { e ->
-                Log.e("TAG", "Error al agregar el libro", e)
-            }
+            finish()
+        }.addOnFailureListener { e ->
+            Log.e("TAG", "Error al agregar el libro", e)
+        }
     }
-
 }

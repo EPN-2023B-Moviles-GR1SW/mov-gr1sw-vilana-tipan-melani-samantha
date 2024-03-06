@@ -50,6 +50,7 @@
         android:layout_height="46dp"
         android:layout_marginTop="60dp"
         android:text="Crear"
+        android:background="@drawable/border_white"
         app:layout_constraintEnd_toEndOf="@+id/rv_ia_librosLeidos"
         app:layout_constraintHorizontal_bias="0.874"
         app:layout_constraintStart_toStartOf="@+id/rv_ia_librosLeidos"

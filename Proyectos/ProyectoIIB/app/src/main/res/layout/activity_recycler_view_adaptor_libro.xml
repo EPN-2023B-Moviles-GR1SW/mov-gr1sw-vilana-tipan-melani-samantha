@@ -7,6 +7,100 @@
     android:background="#F8F8F8"
     tools:context=".RecyclerViewAdaptorLibro">
 
+
+    <ImageView
+        android:id="@+id/img_libro"
+        android:layout_width="136dp"
+        android:layout_height="191dp"
+        android:src="@drawable/libro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/tv_rvnr_urlLibro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Url:"
+        android:textColor="#2196F3"
+        app:layout_constraintStart_toEndOf="@+id/img_libro"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rvnr_autorT" />
+
+    <TextView
+        android:id="@+id/tv_rvnr_tituloLibro"
+        android:layout_width="131dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="40dp"
+        android:text="Libro 1"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/im_rvnr_editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_libro"
+        app:layout_constraintStart_toEndOf="@+id/img_libro"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="57dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="28dp"
+        android:text="Título:"
+        android:textColor="#2196F3"
+        app:layout_constraintStart_toEndOf="@+id/img_libro"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_rvnr_genero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Género:"
+        android:textColor="#2196F3"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_rvnr_tituloLibro"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toEndOf="@+id/img_libro"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <ImageView
+        android:id="@+id/iv_rvnr_eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/im_rvnr_editar"
+        app:layout_constraintEnd_toEndOf="@+id/tv_rvnr_urlLibroV"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toEndOf="@+id/im_rvnr_editar"
+        app:layout_constraintTop_toTopOf="@+id/im_rvnr_editar"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    <TextView
+        android:id="@+id/tv_rvnr_generoLibro"
+        android:layout_width="131dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="44dp"
+        android:text="Genero1"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_rvnr_genero"
+        app:layout_constraintStart_toEndOf="@+id/tv_rvnr_genero"
+        app:layout_constraintTop_toTopOf="@+id/tv_rvnr_genero" />
+
     <TextView
         android:id="@+id/tv_rvnr_autorLibro"
         android:layout_width="130dp"
@@ -19,70 +113,11 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_rvnr_autorT"
         app:layout_constraintStart_toEndOf="@+id/tv_rvnr_autorT"
-        app:layout_constraintTop_toTopOf="@+id/tv_rvnr_autorT"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/im_rvnr_editar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_libro"
-        app:layout_constraintStart_toEndOf="@+id/img_libro"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
-
-    <TextView
-        android:id="@+id/tv_rvnr_generoLibro"
-        android:layout_width="130dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="44dp"
-        android:text="Genero1"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_rvnr_genero"
-        app:layout_constraintStart_toEndOf="@+id/tv_rvnr_genero"
-        app:layout_constraintTop_toTopOf="@+id/tv_rvnr_genero"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/img_libro"
-        android:layout_width="136dp"
-        android:layout_height="191dp"
-        android:src="@drawable/libro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
-
-    <TextView
-        android:id="@+id/tv_rvnr_urlLibro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        android:text="Url:"
-        android:textColor="#2196F3"
-        app:layout_constraintStart_toEndOf="@+id/img_libro"
-        app:layout_constraintTop_toBottomOf="@+id/tv_rvnr_autorT" />
-
-    <TextView
-        android:id="@+id/tv_rvnr_tituloLibro"
-        android:layout_width="127dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="36dp"
-        android:text="Libro 1"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/tv_rvnr_autorT" />
 
     <TextView
         android:id="@+id/tv_rvnr_urlLibroV"
-        android:layout_width="wrap_content"
+        android:layout_width="136dp"
         android:layout_height="19dp"
         android:layout_marginStart="72dp"
         android:text="linklibro"
@@ -90,24 +125,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_rvnr_urlLibro"
         app:layout_constraintStart_toEndOf="@+id/tv_rvnr_urlLibro"
         app:layout_constraintTop_toBottomOf="@+id/tv_rvnr_autorT"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/iv_rvnr_eliminar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/im_rvnr_editar"
-        app:layout_constraintEnd_toEndOf="@+id/tv_rvnr_urlLibroV"
-        app:layout_constraintStart_toEndOf="@+id/im_rvnr_editar"
-        app:layout_constraintTop_toTopOf="@+id/im_rvnr_editar"
-        app:srcCompat="@android:drawable/ic_menu_delete" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <TextView
         android:id="@+id/tv_rvnr_autorT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:text="Autor:"
         android:textColor="#2196F3"
         android:textSize="15sp"
@@ -115,27 +140,26 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_rvnr_genero" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="57dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
-        android:text="Título:"
-        android:textColor="#2196F3"
-        app:layout_constraintStart_toEndOf="@+id/img_libro"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/tv_rvnr_tipoLibro"
+        android:layout_width="87dp"
+        android:layout_height="28dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/img_libro"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/tv_rvnr_genero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        android:text="Género:"
-        android:textColor="#2196F3"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_rvnr_tituloLibro"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/img_libro"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:id="@+id/textView4"
+        android:layout_width="44dp"
+        android:layout_height="27dp"
+        android:text="Libro:"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/img_libro"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

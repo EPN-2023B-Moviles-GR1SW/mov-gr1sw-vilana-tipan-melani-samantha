@@ -1,5 +1,6 @@
 package com.example.proyectoiib
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,7 +10,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -17,8 +17,6 @@ import com.google.firebase.ktx.Firebase
 class EditarActivity : AppCompatActivity() {
     private var libroId: String? = null
     val opcionesGenero = arrayListOf<String>()
-
-
     private var authActual = FirebaseAuth.getInstance().currentUser
     var spinnerTipo: Spinner? = null
     var tituloEditText: EditText? = null
@@ -69,8 +67,6 @@ class EditarActivity : AppCompatActivity() {
 
         }
 
-
-
         spinnerTipo?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long
@@ -85,13 +81,9 @@ class EditarActivity : AppCompatActivity() {
                     urlLibroTitulo?.visibility = View.VISIBLE
                 }
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {
-
             }
-
         }
-
 
         libroId = intent.getStringExtra("libroId")
         if (libroId != null) {
@@ -104,15 +96,13 @@ class EditarActivity : AppCompatActivity() {
                 editarLibro()
             }
         }
-
-
     }
 
     private fun cargarDatosDelLibro() {
         // Obtener la referencia al documento del libro en la colección de libros del usuario
         val db = Firebase.firestore
-        val libroRef = db.collection("usuarios").document(authActual!!.uid)
-            .collection("libros").document(libroId!!)
+        val libroRef = db.collection("usuarios").document(authActual!!.uid).collection("libros")
+            .document(libroId!!)
 
         // Obtener los datos del libro actual
         libroRef.get().addOnSuccessListener { libro ->
@@ -139,7 +129,6 @@ class EditarActivity : AppCompatActivity() {
         }
     }
 
-
     private fun editarLibro() {
 
         var urlLibroVirtual = ""
@@ -159,9 +148,8 @@ class EditarActivity : AppCompatActivity() {
         )
 
         val db = Firebase.firestore
-        //val generosRef = db.collection("usuarios").document(authActual!!.uid).collection("libros")
-        val libroRef = db.collection("usuarios").document(authActual!!.uid)
-            .collection("libros").document(libroId!!)
+        val libroRef = db.collection("usuarios").document(authActual!!.uid).collection("libros")
+            .document(libroId!!)
 
         libroRef.update(libroNuevo as Map<String, Any>).addOnSuccessListener {
             finish()
@@ -177,11 +165,6 @@ class EditarActivity : AppCompatActivity() {
             spinnerGenero!!.getItemAtPosition(spinnerGenero!!.selectedItemPosition).toString()
         )
 
-        /*generosRef.add(libroNuevo).addOnSuccessListener {
-            finish()
-        }.addOnFailureListener { e ->
-            Log.e("TAG", "Error al agregar el libro", e)
-        }*/
     }
 
 }
